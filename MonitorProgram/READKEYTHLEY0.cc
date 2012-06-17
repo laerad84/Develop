@@ -8,6 +8,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
+
+
 
 #include <cstdio>
 #include <cstdlib>
@@ -193,6 +196,8 @@ int RunCommand( int fd, std::string command, int delayWrite = 400000, int delayR
   //std::cerr << "FUNCTION END" << std::endl;
   return 0;
 }
+
+
 
 int RunCommandWrite( int fd, std::string command, char* nowFilename, struct KEYTHLEYdata *KEYdata, int delayWrite = 400000, int delayRead = 3000000){
   int cnt;
