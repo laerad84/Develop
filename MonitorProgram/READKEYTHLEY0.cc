@@ -60,6 +60,7 @@ bool close_shm(struct KEYTHLEYdata** Addr){
     perror("shmdt");
     return false;
   }
+  
   return true;
 }
 
