@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
     std::cout <<temp->t->now << "\t" << std::endl;
     usleep(1000);
   }
+
   temp->closeSHM();
   temp->~shmTemplate();
   
