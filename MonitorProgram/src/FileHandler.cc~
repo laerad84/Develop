@@ -1,0 +1,27 @@
+#include "file_handler.h"
+
+void setFilename(const char* FilenameFormat, char *filename, time_t nowtime ){
+  struct tm* timeInfo = localtime( &nowtime );
+  sprintf(filename, FilenameFormat,(timeInfo->tm_year+1900),(timeInfo->tm_mon+1),timeInfo->tm_mday);
+}
+
+void manageFilename( FILE* fp, const char* FilenameFormat, char* currentFilename, time_t timer){
+  char newFilename[128];
+  setFilename( FilenameFormat, newFilename, timer);
+  //  std::cout << newFilename << std::endl;
+
+  int result = strcmp(newFilename, currentFilename);
+  //  std::cout << "result: " << result << std::endl;
+  if( fp == NULL ){
+    fp = fopen(newFilename, "aw");
+  }else if( result != 0){
+    if(fp != NULL){
+      fclose(fp);
+    }
+    fp = NULL;
+    fp = fopen(newFilename, "aw");
+    currentFilename = newFilename;
+  }else{
+    ;
+  }
+}
